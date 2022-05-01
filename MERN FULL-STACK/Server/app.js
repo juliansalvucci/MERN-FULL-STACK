@@ -9,7 +9,10 @@ import { fileURLToPath } from 'url';
 
 import postRoutes from "./routes/posts.routes.js";
 
+//MidleWare
 const app = express();
+
+//Rutas
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(morgan("dev"));

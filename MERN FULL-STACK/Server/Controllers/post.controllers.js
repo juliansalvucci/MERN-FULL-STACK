@@ -4,16 +4,16 @@ import fs from "fs-extra";
 
 export const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({}); //arreglo de publicaciones.
     return res.json(posts);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });  //Ante un fallo tomo la excepción y la retorno.
   }
 };
 
 export const createPost = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description } = req.body; //Deserializo objeto a json
     let image = null;
     if (req.files?.image) {
       const result = await uploadImage(req.files.image.tempFilePath);
@@ -45,9 +45,7 @@ export const getPost = async (req, res) => {
 export const updatePost = async (req, res) => {
   try {
     const { id } = req.params;
-    // TODO: validate req.body before to update
 
-    // if a new image is uploaded upload it to cloudinary
     if (req.files?.image) {
       const result = await uploadImage(req.files.image.tempFilePath);
       await fs.remove(req.files.image.tempFilePath);
@@ -58,11 +56,11 @@ export const updatePost = async (req, res) => {
       };
     }
 
-    const updatedPost = await Post.findByIdAndUpdate(
+    const updatedPost = await Post.findByIdAndUpdate(  //Toma el id y lo actualiza al toque.
       id,
       { $set: req.body },
       {
-        new: true,
+        new: true, //Esto es para que me devuelva el objeto actualizado.
       }
     );
     return res.json(updatedPost);
@@ -73,7 +71,7 @@ export const updatePost = async (req, res) => {
 
 export const removePost = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params;  //lo que se recibe por parámetro se asigna a una variable para utilizar.
     const post = await Post.findByIdAndDelete(id);
 
     if (post && post.image.public_id) {
