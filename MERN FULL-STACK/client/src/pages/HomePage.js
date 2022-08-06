@@ -10,7 +10,7 @@ export function HomePage() { //Esto es para que el contexto sea accesible desde 
     if (posts.length === 0) //Si no hay publicaciones, muestro un mensaje.
       return (
         <div className="flex flex-col justify-center items-center"> 
-          <VscEmptyWindow className="w-48 h-48 text-white" /> 
+          <VscEmptyWindow className="w-48 h-48 text-white" /> //Icono de vacío.
           <h1 className="text-white text-2xl">There are no posts</h1> 
         </div>
       );
