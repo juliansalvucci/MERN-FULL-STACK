@@ -33,7 +33,7 @@ export function HomePage() { //Esto es para que el contexto sea accesible desde 
         <Link
           to="/new"
           className="bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
-        >
+        > //Link es como una etiqueta a que permite no renderizar toda la página.
           Create Post
         </Link>
       </header>

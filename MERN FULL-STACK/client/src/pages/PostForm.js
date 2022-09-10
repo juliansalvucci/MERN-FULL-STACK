@@ -1,6 +1,6 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik"; //Librerías para formularios.
 import { Link, useParams } from "react-router-dom";
-import * as Yup from "yup";
+import * as Yup from "yup"; //librería para validar objetos.
 import { usePosts } from "../context/postContext";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -38,16 +38,16 @@ export function PostForm() {
           </Link>
         </header>
         <Formik
-          initialValues={post}
+          initialValues={post} //Estado inicial del formulario. es como el formGroup en angular.
           enableReinitialize
-          validationSchema={Yup.object({
+          validationSchema={Yup.object({ //análogo a validators de angular.
             title: Yup.string().required("Title is Required"),
             description: Yup.string().required("Description is Required"),
             // image: Yup.mixed().required("The image required"),
           })}
           onSubmit={async (values, actions) => {
             if (params.id) {
-              await updatePost(params.id, values);
+              await updatePost(params.id, values); 
             } else {
               await createPost(values);
             }

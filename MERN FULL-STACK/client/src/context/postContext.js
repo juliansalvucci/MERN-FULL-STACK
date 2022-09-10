@@ -31,7 +31,7 @@ export const PostProvider = ({ children }) => {
   const createPost = async (post) => {
     try {
       const res = await createPostRequest(post);
-      setPosts([...posts, res.data]);
+      setPosts([...posts, res.data]); //Agrego el registro creado al arreglo de publicaciónes, esto me evita hacer la petición completa.
     } catch (error) {
       console.error(error);
     }
