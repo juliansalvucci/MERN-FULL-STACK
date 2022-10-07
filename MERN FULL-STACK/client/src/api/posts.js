@@ -7,7 +7,7 @@ export const getPostRequest = async (id) => await axios.get("/api/posts/" + id);
 export const deletePostRequest = async (id) =>
   await axios.delete("/api/posts/" + id);
 
-export const createPostRequest = async (post) => {
+export const createPostRequest = async (post) => { //Función adaptada para poder subir imagenes.
   const form = new FormData();
   for (let key in post) {
     form.append(key, post[key]);
